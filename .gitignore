@@ -1,0 +1,4 @@
+
+*.pex
+/releases
+/resources
