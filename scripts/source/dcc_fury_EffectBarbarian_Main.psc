@@ -51,6 +51,7 @@ will gain fury based on a percentage of our max fury.}
 			If(Furious.Player.HasPerk(Furious.PerkShieldWall[b]))
 				Value += 0.05
 			EndIf
+			b += 1
 		EndWhile
 	EndIf
 
