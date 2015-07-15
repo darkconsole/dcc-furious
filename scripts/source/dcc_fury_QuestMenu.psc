@@ -59,13 +59,21 @@ Event OnOptionSelect(Int Item)
 	If(Item == ItemBarbarian)
 		SetVal = False
 		If(Furious.IsBarbarian(Furious.Player))
+			self.SetToggleOptionValue(Item,False)
 			Furious.UnmakeBarbarian(Furious.Player)
 		Else
+			self.SetToggleOptionValue(Item,True)
 			Furious.MakeBarbarian(Furious.Player)
 		EndIf
-
-		Debug.MessageBox("Close to menus to complete the change.")
+		Debug.MessageBox("Close the menus to complete the change.")
 		Utility.Wait(0.5)
+	ElseIf(Item == ItemUpdatePlayer)
+		SetVal = False
+		self.SetToggleOptionValue(Item,True)
+		Furious.UnmakeBarbarian(Furious.Player)
+		Debug.MessageBox("Close the menus to complete the update.")
+		Utility.Wait(0.5)
+		Furious.MakeBarbarian(Furious.Player)
 	EndIf
 
 	If(SetVal)
@@ -108,6 +116,8 @@ Event OnOptionHighlight(Int Item)
 
 	If(Item == ItemBarbarian)
 		self.SetInfoText("Toggle your barbarian status on/off. You will need to quit the MCM for the change to take effect.")
+	ElseIf(Item == ItemUpdatePlayer)
+		self.SetInfoText("Do this if you updated the mod to make sure you have the newest spells n shit.")
 	Else
 		self.SetInfoText("Furious")
 	EndIf
@@ -127,6 +137,7 @@ EndFunction
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Int ItemBarbarian
+Int ItemUpdatePlayer
 
 Function ShowPageGeneral()
 	SetTitleText("General Settings")
@@ -135,6 +146,7 @@ Function ShowPageGeneral()
 	SetCursorPosition(0)
 	AddHeaderOption("Basic")
 	ItemBarbarian = AddToggleOption("I AM BARBARIAN",Furious.IsBarbarian(Furious.Player))
+	ItemUpdatePlayer = AddToggleOption("BARBARIAN UPGRADE",False)
 
 	Return
 EndFunction

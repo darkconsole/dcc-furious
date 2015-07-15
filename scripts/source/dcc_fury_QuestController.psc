@@ -4,7 +4,9 @@ Actor Property Player Auto
 
 Perk[] Property PerkShieldWall Auto
 
+ImagespaceModifier[] Property dcc_fury_ImodBloodHaze Auto
 Spell Property dcc_fury_SpellBarbarian Auto
+Spell Property dcc_fury_SpellBloodForBlood Auto
 Spell Property dcc_fury_SpellEnrage Auto
 Spell Property dcc_fury_SpellShockwave Auto
 
@@ -18,8 +20,9 @@ Function MakeBarbarian(Actor Who)
 	Debug.Notification(Who.GetDisplayName() + " has become a Barbarian")
 	Who.ForceActorValue("MagickaRateMult",0.0)
 	Who.AddSpell(self.dcc_fury_SpellBarbarian,True)
-	Who.AddSpell(self.dcc_fury_SpellEnrage,True)
-	Who.AddSpell(self.dcc_fury_SpellShockwave,True)
+	Who.AddSpell(self.dcc_fury_SpellBloodForBlood,False)
+	Who.AddSpell(self.dcc_fury_SpellEnrage,False)
+	Who.AddSpell(self.dcc_fury_SpellShockwave,False)
 
 	Return
 EndFunction
@@ -30,6 +33,7 @@ Function UnmakeBarbarian(Actor Who)
 	Debug.Notification(Who.GetDisplayName() + " is no longer a Barbarian")
 	Who.ForceActorValue("MagickaRateMult",100.0)
 	Who.RemoveSpell(self.dcc_fury_SpellBarbarian)
+	Who.RemoveSpell(self.dcc_fury_SpellBloodForBlood)
 	Who.RemoveSpell(self.dcc_fury_SpellEnrage)
 	Who.RemoveSpell(self.dcc_fury_SpellShockwave)
 
