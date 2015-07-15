@@ -8,6 +8,7 @@ ImagespaceModifier[] Property dcc_fury_ImodBloodHaze Auto
 Spell Property dcc_fury_SpellBarbarian Auto
 Spell Property dcc_fury_SpellBloodForBlood Auto
 Spell Property dcc_fury_SpellEnrage Auto
+Spell Property dcc_fury_SpellLockpick Auto
 Spell Property dcc_fury_SpellShockwave Auto
 
 Bool Function IsBarbarian(Actor Who)
@@ -22,6 +23,7 @@ Function MakeBarbarian(Actor Who)
 	Who.AddSpell(self.dcc_fury_SpellBarbarian,True)
 	Who.AddSpell(self.dcc_fury_SpellBloodForBlood,False)
 	Who.AddSpell(self.dcc_fury_SpellEnrage,False)
+	Who.AddSpell(self.dcc_fury_SpellLockpick,False)
 	Who.AddSpell(self.dcc_fury_SpellShockwave,False)
 
 	Return
@@ -35,6 +37,7 @@ Function UnmakeBarbarian(Actor Who)
 	Who.RemoveSpell(self.dcc_fury_SpellBarbarian)
 	Who.RemoveSpell(self.dcc_fury_SpellBloodForBlood)
 	Who.RemoveSpell(self.dcc_fury_SpellEnrage)
+	Who.RemoveSpell(self.dcc_fury_SpellLockpick)
 	Who.RemoveSpell(self.dcc_fury_SpellShockwave)
 
 	Return
